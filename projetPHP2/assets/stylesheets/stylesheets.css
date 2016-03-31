@@ -1,0 +1,216 @@
+body {
+  background-image: url("../images/background1.jpg");
+  background-attachment: fixed; }
+
+.navbar-default {
+  background: lightblue;
+  border-bottom: solid 1px black;
+  width: 100%;
+  position: fixed;
+  z-index: 1; }
+
+.navbar-toggle {
+  border-color: black; }
+
+.icon-bar {
+  background-color: black; }
+
+ul li a {
+  top: -10px;
+  height: 10%;
+  display: inline-block;
+  font-style: italic;
+  font-family: Impact;
+  font-size: 20px;
+  margin-top: 10px; }
+ul li:hover {
+  color: black;
+  background-color: #ce8483;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: linear 3s height; }
+
+.rech, .rech input {
+  padding-left: 20px;
+  border-radius: 10px;
+  display: inline-block; }
+
+.rech button {
+  vertical-align: middle;
+  border-radius: 5px; }
+.rech button:hover {
+  background-color: gainsboro; }
+
+.glyphicon-search {
+  color: red; }
+
+#connexion {
+  margin-top: 12%; }
+
+.bonjour {
+  margin-left: 200px;
+  color: grey;
+  display: inline-block;
+  font-style: italic;
+  font-family: Impact;
+  font-size: 30px; }
+
+.best, .top {
+  margin-top: -20px;
+  position: fixed;
+  height: 160px; }
+  .best h4, .top h4 {
+    color: black;
+    font-style: italic; }
+  .best a, .top a {
+    color: black; }
+    .best a button, .top a button {
+      margin-left: 10px;
+      display: block;
+      width: 200px;
+      border-radius: 20px; }
+    .best a button:hover, .top a button:hover {
+      background-color: lightsalmon; }
+  .best a:hover, .top a:hover {
+    text-decoration: inherit;
+    color: inherit; }
+
+.top {
+  margin-top: -20px;
+  position: fixed; }
+
+@media all and (max-width: 991px) {
+  .bonjour {
+    margin-left: inherit;
+    font-size: 40; } }
+.to_top {
+  position: fixed;
+  right: 40px;
+  top: 90%;
+  display: none;
+  z-index: 1; }
+  .to_top button {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: inherit;
+    border-radius: 150px; }
+    .to_top button .glyphicon {
+      padding: 5px;
+      font-size: 30px;
+      color: white; }
+
+#box {
+  margin-top: 0px;
+  min-height: 662px;
+  word-wrap: break-word; }
+  #box .annonce {
+    border-bottom: 2px solid black;
+    border-top: 1px dotted black;
+    background-color: lightgray;
+    padding: 10px;
+    margin-bottom: 40px;
+    height: 175px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+    #box .annonce button {
+      margin-top: 50px; }
+    #box .annonce img {
+      max-width: 200px;
+      max-height: 200px;
+      border-radius: 15px;
+      border: 3px white solid; }
+    #box .annonce .minidesc .marque {
+      font-size: 20px;
+      font-family: Corbel;
+      font-weight: bold; }
+    #box .annonce .minidesc .modele {
+      font-size: 15px;
+      font-weight: bold; }
+    #box .annonce .minidesc .annee, #box .annonce .minidesc .kilometrage {
+      font-size: 10px;
+      font-style: italic;
+      margin-top: 8px; }
+    #box .annonce .effacer {
+      background-color: inherit;
+      border: inherit;
+      float: right; }
+      #box .annonce .effacer .glyphicon-remove {
+        color: red;
+        font-size: 20px; }
+
+#contenaireprod #impfile {
+  margin-left: 32%; }
+#contenaireprod .quoi {
+  float: left;
+  position: absolute; }
+
+#box .play {
+  border: inherit;
+  background-color: inherit; }
+  #box .play .glyphicon-play {
+    color: rgba(255, 0, 0, 0.6);
+    font-size: 30px;
+    margin-top: -5px; }
+  #box .play .glyphicon-play:hover {
+    color: green; }
+
+#box {
+  height: 1500px; }
+  #box .der h1 {
+    font-style: italic;
+    font-family: cursive;
+    border-bottom: 1px solid red;
+    display: inline-block; }
+
+#box #contenaireprod {
+  margin-top: 40px;
+  border: white 2px solid;
+  border-radius: 50px;
+  background-color: rgba(204, 204, 204, 0.9);
+  text-align: center; }
+  #box #contenaireprod .imageprod img {
+    margin-top: 20px;
+    max-height: 400px;
+    max-width: 400px;
+    border: 1px black solid;
+    border-radius: 50px; }
+  #box #contenaireprod h1 {
+    font-family: Impact;
+    font-style: italic; }
+  #box #contenaireprod h2 {
+    color: red; }
+  #box #contenaireprod form {
+    margin-bottom: 50px; }
+    #box #contenaireprod form input, #box #contenaireprod form textarea, #box #contenaireprod form select {
+      width: 300px;
+      border-radius: 10px;
+      border: 1px black solid;
+      box-shadow: 10px 10px 5px #857576;
+      background-color: rgba(20, 20, 20, 0.7);
+      color: white;
+      font-family: cursive;
+      margin: 5px;
+      color: lightgrey; }
+    #box #contenaireprod form input:focus, #box #contenaireprod form textarea:focus, #box #contenaireprod form select:focus {
+      background-color: rgba(0, 0, 0, 0.9); }
+    #box #contenaireprod form button {
+      margin-top: 10px;
+      color: white;
+      background-color: darkorange;
+      padding: 10px;
+      height: 50px;
+      border: 1px solid black;
+      border-radius: 10px; }
+    #box #contenaireprod form button:hover {
+      background-color: orange; }
+
+input[type="submit"] {
+  margin-top: 10px !important;
+  color: white !important;
+  background-color: darkorange !important;
+  padding: 10px !important;
+  height: 50px !important;
+  width: 100px !important;
+  border: 1px solid black !important;
+  border-radius: 10px !important; }
+
+/*# sourceMappingURL=stylesheets.css.map */
