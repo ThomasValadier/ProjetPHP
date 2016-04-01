@@ -1,0 +1,1 @@
+$(function(){    $('#cache').hide(1500);});

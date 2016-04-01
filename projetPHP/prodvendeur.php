@@ -5,11 +5,14 @@ if (test::autorise()) {
     echo "<div></div>";
 } else
     header('location:index.php');
+
+
 try {
     $BDD = new PDO ('mysql:host=localhost;dbname=testphp', 'root', '');
 } catch (PDOException $e) {
     echo 'connexion impossible : ' . $e->getMessage();
 }
+
 ?>
 
 
@@ -46,12 +49,12 @@ try {
                 ?>
                 <div class="rech">
 
-                        <form action="requette.php">
-                            <input type="text" placeholder="Recherche" name="br" size="8">
-                            <button type="submit" name="rechercher">
-                                <div class="glyphicon glyphicon-search"></div>
-                            </button>
-                        </form>
+                    <form action="requette.php">
+                        <input type="text" placeholder="Recherche" name="br" size="8">
+                        <button type="submit" name="rechercher">
+                            <div class="glyphicon glyphicon-search"></div>
+                        </button>
+                    </form>
 
                 </div>
             </div>
@@ -77,17 +80,35 @@ try {
 </nav>
 
 
+
 <div id="box" class="col-md-offset-2 col-md-8">
 
-    </br><b><?php test::ecriture($BDD, $log) ?></b>
-    <br>
-    <br>
-    <br>
-
-
     <?php
-    test::affichage($BDD, $log);
+    $id = $_GET['id'];
+    $req = $BDD->query("SELECT * FROM voiture WHERE id_voiture = '$id'");
+
+    while ($raq = $req->fetch()) {
+
+        echo $mo = $raq['modele'] . "</br>";
+        echo "<img src=\"upload/" . $raq['image'] . "\"></br>";
+        echo  $raq['kilometrage'] . "</br>";
+        echo  "<div class='des'>" . $raq['description'] . "</div>";
+        echo "<form method='post' action='modif.php?id=". $id . "' name='modif'><input name='modif' value='modifier' type='submit'></form>";
+        if (isset ($_POST['modif'])) {
+            echo "<form method='post' action='modif.php?id=". $id . "'><input name = 'modmod' type='text' value =' " . $raq['modele'] . "'>
+          <input type ='submit' value=\"coucou\" name='modifmod'></form>";
+        }
+
+
+
+
+
+    }
+
+
     ?>
+
+
 </div>
 
 

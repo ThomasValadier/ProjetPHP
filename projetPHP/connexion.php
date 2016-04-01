@@ -15,14 +15,13 @@ require 'uploadFile.php';
 $upload = new uploadFile();
 if (isset($_POST['ENVOYER']) && !empty($_POST['ENVOYER'])) {
     $tmp_name = $_FILES['upload']['tmp_name'];
-    $name = $_FILES['upload']['name'];
+    $name = md5(microtime(true)) . $_FILES['upload']['name'];
     $upload->upload($tmp_name, $name);
 }
 try {
     $BDD = new PDO ('mysql:host=localhost;dbname=testphp', 'root', '');
 } catch (PDOException $e) {
     echo 'connexion impossible : ' . $e->getMessage();
-
 
 
 
@@ -39,6 +38,7 @@ try {
         <title>Connexion</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </header>
     <body>
     <nav class="navbar navbar-default">
@@ -54,23 +54,35 @@ try {
 
                 </button>
 
-                <p class="navbar-brand"> <?php $log = $_SESSION['session']['login'];
-
+                <div class="navbar-brand"> <?php $log = $_SESSION['session']['login'];
                     if (test::autorise()) {
-                        echo "<div class=\"bonjour\">" . $_SESSION['session']['login'] . " Shop</div>";
+                        echo "<div class=\"bonjour \">" . $_SESSION['session']['login'] . " Shop</div>";
                     } else
                         header('location:index.php');
-                    ?></p>
+                    ?>
+                    <div class="rech">
+
+                        <form action="requette.php">
+                            <input type="text" placeholder="Recherche" name="br" size="8">
+                            <button type="submit" name="rechercher">
+                                <div class="glyphicon glyphicon-search"></div>
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
             </div>
 
+
             <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="affichage.php">Mes annonces ( <?php test::compte($BDD, $log);?> )</a>
+                    <li><a href="affichage.php">Mes annonces (<?php test::compte($BDD,$log);?> )</a></li>
                     <li><a href="deconnexion.php">Déconnexion</a>
 
-
-                    </li>
                     </li>
 
                 </ul>
@@ -120,8 +132,7 @@ try {
 
     </form>
 
-    </body>
-    </html>
+
 
 <?php
 if (isset($_POST['val'])) {
@@ -142,7 +153,7 @@ if (isset($_POST['val'])) {
  </br>
  </br>
      <p>
-     <select name="marque">
+     <select name="marque" >
         <option value ="0" style=\'background-color:#dcdcc3\' selected disabled>Choisissez la marque</option>
         <option value="renault">Renault</option>
         <option value="peugeot">Peugeot</option>
@@ -185,7 +196,7 @@ if (isset($_POST['val'])) {
     </p>
 
 
-    <textarea name="description"  cols="30" rows="10"></textarea></br>
+    <textarea name="description"  cols="120" rows="10"></textarea></br>
     <input  name="upload" type="file"></br>
     <input  class="bouton" type="submit" value="Envoyer" name="ENVOYER">
 

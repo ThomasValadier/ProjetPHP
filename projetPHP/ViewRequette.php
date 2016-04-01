@@ -1,18 +1,7 @@
 <?php
 session_start();
-require('test.php');
-if (test::autorise()) {
-    echo "<div></div>";
-} else
-    header('location:index.php');
-try {
-    $BDD = new PDO ('mysql:host=localhost;dbname=testphp', 'root', '');
-} catch (PDOException $e) {
-    echo 'connexion impossible : ' . $e->getMessage();
-}
+require('ControllerRequette.php');
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <header>
@@ -38,20 +27,16 @@ try {
 
             </button>
 
-            <div class="navbar-brand"> <?php $log = $_SESSION['session']['login'];
-                if (test::autorise()) {
-                    echo "<div class=\"bonjour \">" . $_SESSION['session']['login'] . " Shop</div>";
-                } else
-                    header('location:index.php');
+            <div class="navbar-brand"> <?php requette::bonjour();
                 ?>
                 <div class="rech">
 
-                        <form action="requette.php">
-                            <input type="text" placeholder="Recherche" name="br" size="8">
-                            <button type="submit" name="rechercher">
-                                <div class="glyphicon glyphicon-search"></div>
-                            </button>
-                        </form>
+                    <form action="requette.php">
+                        <input type="text" placeholder="Recherche" name="br" size="8">
+                        <button type="submit" name="rechercher">
+                            <div class="glyphicon glyphicon-search"></div>
+                        </button>
+                    </form>
 
                 </div>
             </div>
@@ -79,14 +64,16 @@ try {
 
 <div id="box" class="col-md-offset-2 col-md-8">
 
-    </br><b><?php test::ecriture($BDD, $log) ?></b>
+    </br><b><?php test::ecritresul($BDD) ?></b>
     <br>
     <br>
     <br>
 
 
     <?php
-    test::affichage($BDD, $log);
+    test::rechercher($BDD);
+
+
     ?>
 </div>
 

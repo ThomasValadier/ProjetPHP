@@ -2,6 +2,8 @@
 
 class test
 {
+
+
     static function autorise()
     {
         if (isset($_SESSION['session']) && isset($_SESSION['session']['login']) && isset($_SESSION['session']['password'])) {
@@ -102,10 +104,10 @@ class test
 
         $req = $BDD->query("SELECT * FROM voiture WHERE login = '$log' ");
         while ($raq = $req->fetch()) {
+            $id = $raq['id_voiture'];
             echo '<b>' . $raq['modele'] . '</b></br></br>';
             echo '<img src = "upload/' . $raq['image'] . ' " ><br>';
-
-            echo '<div class="desc"><p>' . $raq['description'] . ' </p></div><br> ';
+            echo '<a href="prodvendeur.php?id=' . urlencode($id) . '"><button>Voir produit</button></a><br><br>';
             echo '<form action="" method="post">
 <button name="effacer" type="submit" onclick="if(!confirm(\'Etes vous sûr de vouloir supprimer cette annonce ?\')) return false;">Effacer</button></form>';
 
@@ -114,12 +116,17 @@ class test
 
                 $id = $raq['id_voiture'];
                 $BDD->query("DELETE  FROM voiture WHERE id_voiture = '$id' ");
+                $fichier = 'upload/' . $raq['image'];
+
+
+                if (file_exists($fichier))
+                    unlink($fichier);
                 header('location:affichage.php');
                 break;
             }
+
+
         }
-
-
     }
 
     static function compte($BDD, $log)
@@ -158,7 +165,11 @@ class test
                     echo '<img src = "upload/' . $raq['image'] . ' " ><br>';
                     $id = $raq['id_voiture'];
 
-                    echo '<a href="produit.php?id=' . urlencode($id).'"><button>Voir produit</button></a><br><br>';
+                    if ($_SESSION['session']['login'] == $raq['login']) {
+                        echo '<a href="prodvendeur.php?id=' . urlencode($id) . '"><button>Modifier</button></a><br><br>';
+
+                    } else
+                        echo '<a href="produit.php?id=' . urlencode($id) . '"><button>Voir produit</button></a><br><br>';
                 }
 
             }
@@ -171,18 +182,22 @@ class test
         $req = $BDD->query("SELECT  * FROM voiture WHERE description like '%$rech%' or modele like '%$rech%' OR marque like '%$rech%'");
         $res = $req->fetchAll();
         $resultat = count($res);
-        if (!empty($_GET['br'])){
-        if ($resultat == 0)
-            echo "Aucun résultat ne correspond à votre recherche.";
-        elseif ($resultat == 1)
-            echo "1 résultat correspond à votre recherche:";
-        else
-            echo $resultat . " résulats correspondent à votre recherche:";
+        if (!empty($_GET['br'])) {
+            if ($resultat == 0)
+                echo "Aucun résultat ne correspond à votre recherche.";
+            elseif ($resultat == 1)
+                echo "1 résultat correspond à votre recherche:";
+            else
+                echo $resultat . " résulats correspondent à votre recherche:";
+
+        } else
+            echo "Si vous ne remplissez pas la barre de recherche... ça ne risque pas de marcher ;)";
 
     }
-           else
-             echo "Si vous ne remplissez pas la barre de recherche... ça ne risque pas de marcher ;)";
 
+    static function captch(){
+        //clé publique:6Le0BRsTAAAAAOg19nqHj0QS3E0DgrR24QjZoD67
+        //clé privé:6Le0BRsTAAAAAGQguQlf0FMdNaMLoYV4sMkbG6Cy
     }
 
 

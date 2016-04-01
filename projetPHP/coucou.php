@@ -1,0 +1,1 @@
+<!doctype html><html lang="en"><head>    <meta charset="UTF-8">    <title>Document</title>    <script src="jquery.js" type="text/javascript"></script>    <script src="code.js" type="text/javascript"></script></head><body><div id="cache">salut</div></body></html>

@@ -4,7 +4,7 @@ try {
 } catch (PDOException $e) {
     echo 'connexion impossible : ' . $e->getMessage();
 }
-$login = htmlspecialchars(urldecode($_GET['log']));
+$login = urldecode($_GET['log']);
 $cle = $_GET['cle'];
 
 $requeser = $BDD->prepare("SELECT * FROM utilisateurs WHERE login = ? AND cle = ?");

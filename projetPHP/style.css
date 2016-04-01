@@ -1,21 +1,21 @@
-
 body {
 
     background:-moz-linear-gradient(-45deg, #161016 1%, #785ba0 15%, #2b1b22 25%, #785ba0 29%, #2b1a24 35%, #785ba0 42%, #2b2138 49%, #16050c 51%, #785ba0 70%, #51858c 77%, #33222a 83%, #785ba0 94%, #25222d 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(-45deg, #161016 1%,#785ba0 15%,#2b1b22 25%,#785ba0 29%,#2b1a24 35%,#785ba0 42%,#2b2138 49%,#16050c 51%,#785ba0 70%,#51858c 77%,#33222a 83%,#785ba0 94%,#25222d 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(135deg, #161016 1%,#785ba0 15%,#2b1b22 25%,#785ba0 29%,#2b1a24 35%,#785ba0 42%,#2b2138 49%,#16050c 51%,#785ba0 70%,#51858c 77%,#33222a 83%,#785ba0 94%,#25222d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#161016', endColorstr='#25222d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */!important;
-  }
+}
 
 .navbar-default {
     background:grey !important;
     opacity: 0.3;
     border-color: darkgrey!important;
+
 }
 
 .navbar-toggle {
 
-        border-color: black !important;
+    border-color: black !important;
 }
 
 .icon-bar {
@@ -31,6 +31,8 @@ a{
     border-radius:10px;
 }
 li{
+    top:-10px;
+    height: 10%;
     color:black;
     display:inline-block;
     font-style: italic;
@@ -38,16 +40,35 @@ li{
     font-size: 30;
     margin-top: 10px;
 }
+
 li:hover {
-    top:-10px;
-    height: 10%;
+
     color:black;
-    background-color: #ce8483 !important;
+    background-color: #ce8483 ;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     transition: linear 3s height;
+}
 
+.rech,  .rech input {
+  padding-left: 20px;
+   border-radius:10px;
+    display: inline-block;
+}
+.rech button{
+    vertical-align: middle;
+}
 
+.bonjour {
+    vertical-align: middle;
+}
+
+ .rech button:hover {
+    background-color:gainsboro;
+
+}
+.glyphicon-search{
+    color:red;
 }
 
 
@@ -109,20 +130,20 @@ button:hover, .bouton:hover{
 }
 @media all and (max-width: 991px)
 {
-   .bonjour{
-       margin-left:inherit;
-       font-size:40;
-   }
+    .bonjour{
+        margin-left:inherit;
+        font-size:40;
+    }
 
     body
     {background-image: inherit;}
-#box{
-    border-radius:inherit!important;
-    top:-22px;
-}
-img{
-    height:40%!important;
-}
+    #box{
+        border-radius:inherit!important;
+        top:-22px;
+    }
+    img{
+        height:40%!important;
+    }
 }
 @media all and (max-width: 1024px)
 {
